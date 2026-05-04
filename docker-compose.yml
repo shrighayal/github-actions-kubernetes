@@ -20,7 +20,7 @@ services:
       start_period: 30s
 
   backend:
-    image: ${DOCKERHUB_USERNAME}/backend:latest
+    image: shrikantghayal/backend:latest
     build: ./backend
     restart: unless-stopped
     environment:
@@ -35,7 +35,7 @@ services:
         condition: service_healthy
 
   frontend:
-    image: ${DOCKERHUB_USERNAME}/frontend:latest
+    image: shrikantghayal/frontend:latest
     build: ./frontend
     restart: unless-stopped
     ports:
