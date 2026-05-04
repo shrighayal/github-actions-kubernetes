@@ -2,30 +2,40 @@ name: CD
 
 on:
   workflow_run:
+<<<<<<< HEAD
      workflow: ["CI"]
      types: [completed]
      branches: [main]
+=======
+    workflows: ["CI"]
+    types: [completed]
+>>>>>>> a2e489f (final fix ci cd)
 
 jobs:
   deploy:
     if: ${{ github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
+
     steps:
-      - uses: appleboy/ssh-action@v1
+      - name: Deploy to EC2
+        uses: appleboy/ssh-action@v1
         with:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
-            if [ ! -d ~/github-actions-kubernetes ]; then
-            git clone ${{ github.server_url }}/${{github.repository }}.git ~/github-actions-kubernetes
+            if [ ! -d ~/github-actions-kubernetes-masterclass ]; then
+              git clone https://github.com/${{ github.repository }}.git ~/github-actions-kubernetes-masterclass
             fi
-            cd ~/github-actions-kubernetes
+
+            cd ~/github-actions-kubernetes-masterclass
             git pull origin main
+
             if [ ! -f .env ]; then
-              echo "ERROR: ~/github-actions-kubernetes/ .evn is missing. Create it once with DOCKERHUB_USERNAME and   DB credentials."
+              echo "ERROR: .env file is missing"
               exit 1
             fi
+
             docker compose pull
             docker compose up -d
             docker image prune -f
