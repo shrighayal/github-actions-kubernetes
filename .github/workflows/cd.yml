@@ -1,0 +1,31 @@
+name: CD
+
+on:
+  workflow_run:
+     workflow: ["CI"]
+     types: [completed]
+     branches: [main]
+
+jobs:
+  deploy:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secerts.EC2_HOST }}
+          username: ${{ secerts.EC2_USER }}
+          key: ${{ secerts.EC2_SSH_KEY }}
+          script: |
+            if [ ! -d ~/github-actions-kubernetes ]; then
+            git clone ${{ github.server_url }}/${{github.repo }}.git ~/github-actions-kubernetes
+            fi
+            cd ~/github-actions-kubernetes
+            git pull origin main
+            if [ ! -f .env ]; then
+              echo "ERROR: ~/github-actions-kubernetes/ .evn is missing. Create it once with DOCKERHUB_USERNAME and   DB credentials."
+              exit 1
+            fi
+            docker compose pull
+            docker compose up -d
+            docker image prune -f
