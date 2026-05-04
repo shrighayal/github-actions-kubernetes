@@ -227,7 +227,7 @@ Same app. Same pipeline shape. Different runtime — and a lot more power.
 ## ☁️ AWS Deployment
 
 - EC2 Instance (Ubuntu)
-- [App Screenshot](docs/screenshot.png)
+![](./images/output1.png)
 - Docker + Docker Compose installed
 - Security Group:
   - Port 80 (HTTP)
@@ -251,7 +251,7 @@ Same app. Same pipeline shape. Different runtime — and a lot more power.
 ## 📸 Screenshots
 
 ### Application UI
-![App Screenshot](docs/screenshot.png)
+![](./images/output2.png)
 
 ---
 
@@ -264,7 +264,7 @@ Same app. Same pipeline shape. Different runtime — and a lot more power.
 - Real-world DevOps troubleshooting
 
 ---
-[App Screenshot](docs/screenshot.png)
+![](./images/output3.png)
 
 
 ## 📈 Future Improvements
@@ -276,8 +276,7 @@ Same app. Same pipeline shape. Different runtime — and a lot more power.
 - Auto-scaling
 
 ---
-[App Screenshot](docs/screenshot.png)
-
+![](./images/output4.png)
 
 ## 👨‍💻 Author
 
