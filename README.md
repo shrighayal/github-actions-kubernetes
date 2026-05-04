@@ -1,4 +1,4 @@
-# 🚀 SkillPulse - DevOps CI/CD Project
+# 🚀 Github-Actions-Kubernetes (SkillPulse) - DevOps CI/CD Project
 
 A full-stack **DevOps project** demonstrating end-to-end CI/CD pipeline using:
 
