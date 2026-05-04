@@ -27,4 +27,4 @@ jobs:
           context: ./backend
           file: ./backend/Dockerfile
           push: true
-          tags: shrighayal/backend:latest
+          tags: shrikantghayal/backend:latest
