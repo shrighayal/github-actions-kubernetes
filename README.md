@@ -1,57 +1,34 @@
-# SkillPulse — GitHub Actions & Kubernetes Masterclass
+# 🚀 SkillPulse - DevOps CI/CD Project
 
-A small, real application with a real CI/CD pipeline. The app — SkillPulse — lets you track skills you're learning and the hours you put in. The point isn't the app. The point is everything around it: how a single `git push` becomes a running update on a server in under two minutes, with no human pressing any button.
+A full-stack **DevOps project** demonstrating end-to-end CI/CD pipeline using:
 
-This repo is the working demo for the **TrainWithShubham GitHub Actions & Kubernetes Masterclass**.
-
-> **New here? Start with the full beginner's guide:** [`docs/skillpulse-cicd-guide.pdf`](docs/skillpulse-cicd-guide.pdf) — a 29-page step-by-step walkthrough covering the foundations (DevOps, CI/CD, containers, GitHub Actions, EC2), how this pipeline is built line-by-line, how to deploy your own copy from scratch, the engineering rationale behind each design choice, and how to talk about this project on your resume and in interviews.
-
----
-
-## Why DevOps matters
-
-For most of software's history, the people who *wrote* software and the people who *ran* it were two different teams with two different goals.
-
-- Developers wanted to ship features.
-- Operations wanted stability.
-
-The fastest way for ops to be stable was to slow developers down. The fastest way for developers to ship was to throw code over the wall. Both teams were right. Both teams were also miserable. And the customer paid the price — releases happened once a quarter, every release was scary, and bugs took weeks to fix.
-
-DevOps is the cultural and technical answer to that: *the same team owns the change all the way to production, and tooling makes that safe.* It's not a job title. It's a way of working that says small, frequent, automated, and reversible beats big, rare, manual, and irreversible — every time.
-
-When DevOps is working you can tell because:
-
-- **Deploys are boring.** Friday afternoon, Monday morning, doesn't matter.
-- **Rollbacks are cheap.** A bad deploy is a 30-second fix, not an incident.
-- **Feedback is fast.** A broken commit fails CI in minutes, not "after QA next sprint."
-- **Ownership is clear.** The person who wrote the code is the person who watches it ship.
-
-You get there by automating the path from a developer's laptop to production. That automation is called a **pipeline**.
+- GitHub Actions (CI/CD)
+- Docker & Docker Compose
+- AWS EC2 Deployment
+- MySQL Database
+- Nginx Frontend
 
 ---
 
-## Why CI/CD is the heart of DevOps
+## 🌐 Live Demo
 
-CI/CD is two ideas wearing one acronym.
-
-- **Continuous Integration** — every change, from every developer, gets built and tested automatically the moment it lands. You catch breakage in minutes, not days. Merge conflicts shrink because nobody's branch lives for two weeks.
-- **Continuous Delivery / Deployment** — every change that passes CI is automatically packaged and shipped — to staging, or all the way to production. There is no "deploy day." Every commit is a candidate release.
-
-The reason this matters: the cost of fixing a bug grows with the time between writing it and finding it. CI/CD shortens that gap to minutes. The reason it's hard: the only way to make it work is to *automate everything*. Build, test, package, deploy, verify. No "just run this script on my laptop" steps. If a human has to remember it, it will eventually be forgotten — and then it will fail at 2 a.m.
+👉 http://52.66.199.74
 
 ---
 
-## Why GitHub Actions
+## 📌 Project Overview
 
-A pipeline needs a runner — something that watches your repo, executes your build/test/deploy steps, and reports back. Historically that meant standing up a Jenkins server, paying for CircleCI, or wiring something custom. All of those still work; none of them are the lowest-friction option in 2026.
+SkillPulse is a skill tracking application where users can:
 
-GitHub Actions wins on three things:
+- Track learning progress
+- Log skill sessions
+- Monitor hours and goals
+- Visualize growth
 
-1. **It lives where the code lives.** No separate server, no separate auth, no separate UI. Your `.github/workflows/*.yml` files are part of the repo — they evolve with the code, get reviewed in the same PRs, and survive every clone.
-2. **It's free for public repos and generous for private ones.** A complete CI/CD pipeline costs zero rupees to start.
-3. **The Marketplace is enormous.** Need to SSH into a server? `appleboy/ssh-action`. Need to log in to Docker Hub? `docker/login-action`. You compose pre-built blocks instead of writing bash from scratch.
+---
 
-The trade-off is GitHub lock-in. For most teams, that's a fair price for the integration.
+## 🏗️ Architecture
+
 
 ---
 
@@ -245,7 +222,71 @@ Same app. Same pipeline shape. Different runtime — and a lot more power.
 
 ---
 
-## Credits
+---
 
-Built for the [TrainWithShubham](https://www.youtube.com/@TrainWithShubham) community. If this repo helped you understand a real CI/CD pipeline end to end, share it forward — that's how the community grows.
-# github-actions-kubernetes
+## ☁️ AWS Deployment
+
+- EC2 Instance (Ubuntu)
+- [App Screenshot](docs/screenshot.png)
+- Docker + Docker Compose installed
+- Security Group:
+  - Port 80 (HTTP)
+  - Port 22 (SSH)
+  - Port 3306 (optional)
+
+---
+
+## 🔑 GitHub Secrets
+
+| Secret Name        | Description |
+|------------------|------------|
+| DOCKERHUB_USERNAME | DockerHub username |
+| DOCKERHUB_TOKEN    | DockerHub access token |
+| EC2_HOST           | EC2 public IP |
+| EC2_USER           | ubuntu |
+| EC2_SSH_KEY        | Private SSH key |
+
+---
+
+## 📸 Screenshots
+
+### Application UI
+![App Screenshot](docs/screenshot.png)
+
+---
+
+## 💡 Key Learnings
+
+- CI/CD pipeline automation
+- Docker multi-service architecture
+- GitHub Actions workflow debugging
+- AWS EC2 deployment
+- Real-world DevOps troubleshooting
+
+---
+[App Screenshot](docs/screenshot.png)
+
+
+## 📈 Future Improvements
+
+- Kubernetes (EKS)
+- HTTPS with Nginx + SSL
+- Domain integration
+- Monitoring (Prometheus + Grafana)
+- Auto-scaling
+
+---
+[App Screenshot](docs/screenshot.png)
+
+
+## 👨‍💻 Author
+
+**Shrikant Ghayal**
+
+- GitHub: https://github.com/shrighayal
+
+---
+
+## ⭐ If you like this project
+
+Give it a ⭐ on GitHub!
