@@ -2,14 +2,8 @@ name: CD
 
 on:
   workflow_run:
-<<<<<<< HEAD
-     workflow: ["CI"]
-     types: [completed]
-     branches: [main]
-=======
     workflows: ["CI"]
     types: [completed]
->>>>>>> a2e489f (final fix ci cd)
 
 jobs:
   deploy:
@@ -24,21 +18,21 @@ jobs:
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
-             set -e
+            set -e
 
-                if [ ! -d ~/github-actions-kubernetes-masterclass ]; then
-    git clone https://github.com/${{ github.repository }}.git ~/github-actions-kubernetes-masterclass
-  fi
+            if [ ! -d ~/github-actions-kubernetes-masterclass ]; then
+              git clone https://github.com/${{ github.repository }}.git ~/github-actions-kubernetes-masterclass
+            fi
 
-  cd ~/github-actions-kubernetes-masterclass
+            cd ~/github-actions-kubernetes-masterclass
 
-  git pull origin main
+            git pull origin main
 
-  if [ ! -f .env ]; then
-    echo "ERROR: .env file is missing"
-    exit 1
-  fi
+            if [ ! -f .env ]; then
+              echo "ERROR: .env file is missing"
+              exit 1
+            fi
 
-  docker compose pull
-  docker compose up -d
-  docker image prune -f
+            docker compose pull
+            docker compose up -d
+            docker image prune -f
