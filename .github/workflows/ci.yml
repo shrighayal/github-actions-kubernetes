@@ -21,6 +21,15 @@ jobs:
             username: ${{ secrets.DOCKERHUB_USERNAME }}
             password: ${{ secrets.DOCKERHUB_TOKEN }}
 
+      - name: Build frontend Image
+        uses: docker/build-push-action@v5
+        with:
+          context: ./frontend
+          file: ./backend/Dockerfile
+          push: true
+          tags: shrikantghayal/frontend:latest
+
+
       - name: Build Backend Image
         uses: docker/build-push-action@v5
         with:
