@@ -1,5 +1,4 @@
 services:
-  # MySQL Database
   db:
     image: mysql:8.4
     restart: unless-stopped
@@ -20,9 +19,9 @@ services:
       retries: 10
       start_period: 30s
 
-  # Go Backend API
   backend:
-    image: ${DOCKERHUB_USERNAME}/skillpulse-backend:shyam
+    image: ${DOCKERHUB_USERNAME}/skillpulse-backend:latest
+    build: ./backend
     restart: unless-stopped
     environment:
       DB_HOST: db
@@ -35,15 +34,12 @@ services:
       db:
         condition: service_healthy
 
-  # Nginx - Frontend + Reverse Proxy
-  nginx:
-    image: nginx:alpine
+  frontend:
+    image: ${DOCKERHUB_USERNAME}/skillpulse-frontend:latest
+    build: ./frontend
     restart: unless-stopped
     ports:
       - "80:80"
-    volumes:
-      - ./frontend:/usr/share/nginx/html:ro
-      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro
     depends_on:
       - backend
 
